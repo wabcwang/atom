@@ -60,10 +60,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-bosh-lite" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-mac-k8s" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/09/12/bosh-lite/" class="article-date">
-  <time datetime="2016-09-12T13:56:57.000Z" itemprop="datePublished">2016-09-12</time>
+    <a href="/2016/09/12/mac-k8s/" class="article-date">
+  <time datetime="2016-09-12T14:24:51.000Z" itemprop="datePublished">2016-09-12</time>
 </a>
     
   </div>
@@ -74,7 +74,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/12/bosh-lite/">bosh-lite 部署cloudfoundry</a>
+      <a class="article-title" href="/2016/09/12/mac-k8s/">mac 本地部署kubernetes</a>
     </h1>
   
 
@@ -82,117 +82,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1-安装bosh-lite"><a href="#1-安装bosh-lite" class="headerlink" title="1. 安装bosh-lite"></a>1. 安装bosh-lite</h1><p><a href="https://github.com/cloudfoundry/bosh-lite" target="_blank" rel="external">bosh-lite</a></p>
-<h2 id="1-1-安装bosh命令行"><a href="#1-1-安装bosh命令行" class="headerlink" title="1.1 安装bosh命令行"></a>1.1 安装bosh命令行</h2><h3 id="1-1-1-安装ruby"><a href="#1-1-1-安装ruby" class="headerlink" title="1.1.1 安装ruby"></a>1.1.1 安装ruby</h3><p><a href="https://rvm.io/" target="_blank" rel="external">rvm管理工具</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ \curl -sSL https://get.rvm.io | bash -s stable</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ rvm install 2.3.0</span><br><span class="line">$ rvm use 2.3.0 default</span><br></pre></td></tr></table></figure>
-<h3 id="1-1-2-安装bosh-cli命令工具"><a href="#1-1-2-安装bosh-cli命令工具" class="headerlink" title="1.1.2 安装bosh_cli命令工具"></a>1.1.2 安装bosh_cli命令工具</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gem install bosh_cli --no-ri --no-rdoc</span><br></pre></td></tr></table></figure>
-<h2 id="1-2-安装vagrant"><a href="#1-2-安装vagrant" class="headerlink" title="1.2 安装vagrant"></a>1.2 安装vagrant</h2><p><a href="https://www.vagrantup.com/downloads.html" target="_blank" rel="external">vagrant</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vagrant --version</span><br><span class="line">Vagrant 1.7.4</span><br></pre></td></tr></table></figure>
-<h2 id="1-3-安装VBox"><a href="#1-3-安装VBox" class="headerlink" title="1.3 安装VBox"></a>1.3 安装VBox</h2><p><a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="external">VBox</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ VBoxManage --version</span><br><span class="line">5.0.16r...</span><br></pre></td></tr></table></figure>
-<h2 id="1-4-下载bosh-lite代码"><a href="#1-4-下载bosh-lite代码" class="headerlink" title="1.4 下载bosh-lite代码"></a>1.4 下载bosh-lite代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/workspace</span><br><span class="line">$ git clone https://github.com/cloudfoundry/bosh-lite</span><br></pre></td></tr></table></figure>
-<h2 id="1-5-启动vagrant"><a href="#1-5-启动vagrant" class="headerlink" title="1.5 启动vagrant"></a>1.5 启动vagrant</h2><ul>
-<li>修改Vagrantfile，增加一行，为了规避vagant的bug</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.ssh.insert_key = false</span><br></pre></td></tr></table></figure>
+        <h1 id="mac-部署k8s"><a href="#mac-部署k8s" class="headerlink" title="mac 部署k8s"></a>mac 部署k8s</h1><hr>
+<p><a href="http://kubernetes.io/docs/getting-started-guides/minikube/" target="_blank" rel="external">http://kubernetes.io/docs/getting-started-guides/minikube/</a></p>
 <ul>
-<li>启动</li>
+<li><p>启动k8s</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>停止k8s</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube stop</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开k8s dashboard</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">minikube dashboard</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取所有的pods</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get pods --all-namespaces</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取所有的节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get nodes</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vagrant up --provider=virtualbox</span><br></pre></td></tr></table></figure>
-<ul>
-<li>暂停</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vagrant suspend</span><br></pre></td></tr></table></figure>
-<ul>
-<li>添加指向vagrant的路由</li>
-<li>==重启机器需要重新执行这一步==</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin/add-route</span><br></pre></td></tr></table></figure>
-<h1 id="2-使用bosh-lite部署cloudfoundry"><a href="#2-使用bosh-lite部署cloudfoundry" class="headerlink" title="2. 使用bosh-lite部署cloudfoundry"></a>2. 使用bosh-lite部署cloudfoundry</h1><ul>
-<li>生成部署清单</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd cf-release</span><br><span class="line">$ ./scripts/generate-bosh-lite-dev-manifest</span><br></pre></td></tr></table></figure>
-<ul>
-<li>上传stemcell</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bosh upload  stemcell ~/cloudfoundry/bosh/bosh-warden-boshlite-ubuntu-trusty-go_agent.tgz</span><br></pre></td></tr></table></figure>
-<ul>
-<li>上传cloudfoundry发布包</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bosh upload  release ~/cloudfoundry/bosh/cf-release.tgz</span><br></pre></td></tr></table></figure>
-<ul>
-<li>执行部署命令</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bosh deploy</span><br></pre></td></tr></table></figure>
-<hr>
-<ul>
-<li>下面的是编译部署的命令</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ cd cf-release</span><br><span class="line">$ bosh create release</span><br><span class="line">$ bosh upload release</span><br><span class="line">$ bosh deploy</span><br></pre></td></tr></table></figure>
-<ul>
-<li>删除部署</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bosh delete deployment cf-warden</span><br></pre></td></tr></table></figure>
-<ul>
-<li>登录到部署好的cloudfoundry环境</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cf login -a https://api.bosh-lite.com --skip-ssl-validation -u admin -p admin</span><br></pre></td></tr></table></figure>
-<ul>
-<li>创建组织</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cf create-org realtech</span><br></pre></td></tr></table></figure>
-<ul>
-<li>指定组织</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cf target -o realtech</span><br></pre></td></tr></table></figure>
-<ul>
-<li>创建空间</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cf create-space admin</span><br></pre></td></tr></table></figure>
-<h1 id="3-使用bosh-lite部署mysql"><a href="#3-使用bosh-lite部署mysql" class="headerlink" title="3. 使用bosh-lite部署mysql"></a>3. 使用bosh-lite部署mysql</h1><ul>
-<li>生成部署清单</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd cf-mysql-release</span><br><span class="line">$ ./scripts/generate-bosh-lite-manifest</span><br></pre></td></tr></table></figure>
-<ul>
-<li>上传mysql-release</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bosh upload  release ~/cloudfoundry/bosh/cf-mysql-release.tgz</span><br></pre></td></tr></table></figure>
-<ul>
-<li>部署mysql</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bosh deploy</span><br></pre></td></tr></table></figure>
-<ul>
-<li>cf 创建mysql服务</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bosh run errand broker-registrar</span><br></pre></td></tr></table></figure>
-<ul>
-<li>或者是执行以下的命令</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cf create-service-broker p-mysql admin password https://p-mysql.bosh-lite.com:443</span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/cloudfoundry-samples/spring-music" target="_blank" rel="external">https://github.com/cloudfoundry-samples/spring-music</a></p>
-<h1 id="4-使用bosh-lite部署redis"><a href="#4-使用bosh-lite部署redis" class="headerlink" title="4. 使用bosh-lite部署redis"></a>4. 使用bosh-lite部署redis</h1><ul>
-<li>生成部署清单</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd cf-redis-release</span><br><span class="line">$ ./scripts/generate-deployment-manifest warden templates/sample_stubs/infrastructure-warden.yml - cf-redis-lite.yml</span><br></pre></td></tr></table></figure>
-<ul>
-<li>上传redis-release</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ bosh upload  release ~/cloudfoundry/bosh/cf-routing-release-0.137.0.tgz</span><br><span class="line">$ bosh upload  release ~/cloudfoundry/bosh/cf-redis-release-426.0.0.tgz</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aria2c --split=10 -c -j 10 http://bosh.io/d/github.com/pivotal-cf/cf-redis-release</span><br></pre></td></tr></table></figure>
-<ul>
-<li>cf 创建redis服务</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cf create-service-broker redis admin admin https://redis-broker.bosh-lite.com:443</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">eval $(minikube docker-env)</span><br><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+<h2 id="k8s-部署mysql-wordpress"><a href="#k8s-部署mysql-wordpress" class="headerlink" title="k8s 部署mysql+wordpress"></a>k8s 部署mysql+wordpress</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tr --delete &apos;\n&apos; &lt;password.txt &gt;.strippedpassword.txt &amp;&amp; mv .strippedpassword.txt password.txt</span><br><span class="line">kubectl create -f https://raw.githubusercontent.com/kubernetes/kubernetes/master/examples/mysql-wordpress-pd/local-volumes.yaml</span><br><span class="line">kubectl create secret generic mysql-pass --from-file=password.txt</span><br><span class="line">kubectl create -f https://raw.githubusercontent.com/kubernetes/kubernetes/master/examples/mysql-wordpress-pd/mysql-deployment.yaml</span><br><span class="line">kubectl create -f https://raw.githubusercontent.com/kubernetes/kubernetes/master/examples/mysql-wordpress-pd/wordpress-deployment.yaml</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wabcwang.github.io/2016/09/12/bosh-lite/" data-id="cit04609500005js64fnw4mua" class="article-share-link">Share</a>
+      <a data-url="http://wabcwang.github.io/2016/09/12/mac-k8s/" data-id="cit0572k80003brs62f8io25a" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cloudfoundry-bosh/">cloudfoundry bosh</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kubernetes/">kubernetes</a></li></ul>
 
     </footer>
   </div>
@@ -244,7 +162,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wabcwang.github.io/2016/06/20/cloudfoundry/" data-id="cit04609c00015js6wu7fqqy4" class="article-share-link">Share</a>
+      <a data-url="http://wabcwang.github.io/2016/06/20/cloudfoundry/" data-id="cit0572jv0000brs62u4jxm6u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cloudfoundry/">cloudfoundry</a></li></ul>
@@ -291,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://wabcwang.github.io/2016/06/20/hello-world/" data-id="cit04609f00025js6qx71mys1" class="article-share-link">Share</a>
+      <a data-url="http://wabcwang.github.io/2016/06/20/hello-world/" data-id="cit0572k20001brs60ntahvhr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -313,7 +231,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudfoundry/">cloudfoundry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudfoundry-bosh/">cloudfoundry bosh</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/cloudfoundry/">cloudfoundry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kubernetes/">kubernetes</a></li></ul>
     </div>
   </div>
 
@@ -323,7 +241,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/cloudfoundry/" style="font-size: 10px;">cloudfoundry</a> <a href="/tags/cloudfoundry-bosh/" style="font-size: 10px;">cloudfoundry bosh</a>
+      <a href="/tags/cloudfoundry/" style="font-size: 10px;">cloudfoundry</a> <a href="/tags/kubernetes/" style="font-size: 10px;">kubernetes</a>
     </div>
   </div>
 
@@ -345,7 +263,7 @@
       <ul>
         
           <li>
-            <a href="/2016/09/12/bosh-lite/">bosh-lite 部署cloudfoundry</a>
+            <a href="/2016/09/12/mac-k8s/">mac 本地部署kubernetes</a>
           </li>
         
           <li>
